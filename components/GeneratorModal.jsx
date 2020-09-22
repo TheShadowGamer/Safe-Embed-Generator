@@ -1,12 +1,7 @@
 const { React } = require("powercord/webpack");
 const { clipboard } = require("electron");
 const request = require("request");
-const {
-  FormTitle,
-  Button,
-  FormNotice,
-  Divider,
-} = require("powercord/components");
+const { FormTitle, Button, Card, Text } = require("powercord/components");
 const {
   TextAreaInput,
   SwitchItem,
@@ -39,24 +34,6 @@ class GeneratorModal extends React.Component {
           <FormTitle tag="h4">Safe Embed Generator</FormTitle>
         </Modal.Header>
         <Modal.Content>
-          <FormNotice
-            imageData={{
-              width: 60,
-              height: 60,
-              src: "/assets/0694f38cb0b10cc3b5b89366a0893768.svg",
-            }}
-            type={FormNotice.Types.WARNING}
-            title="Please Note"
-            body={
-              <>
-                There are still some features not yet implemented and bugs not
-                yet addressed. The same will not be said in the future.
-              </>
-            }
-          />
-          <div style={{ marginBottom: 20 }} />
-          <Divider />
-          <div style={{ marginBottom: 20 }} />
           <TextAreaInput
             value={this.state.providerName}
             onChange={(o) => {
@@ -129,6 +106,12 @@ class GeneratorModal extends React.Component {
           >
             Image Banner
           </SwitchItem>
+          <Card style={{ padding: "18px" }}>
+            <Text>
+              Version 0.3.0 and below were made by Liam The Protogen#2501.
+            </Text>
+          </Card>
+          <div style={{ marginBottom: 20 }} />
         </Modal.Content>
         <Modal.Footer>
           <Button

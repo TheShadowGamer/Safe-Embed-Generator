@@ -1,7 +1,7 @@
 {
   "name": "Safe Embed Generator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Safely generates custom embeds using links.",
-  "author": "Liam The Protogen#2501",
+  "author": "Kyza#4605",
   "license": "MIT"
 }
