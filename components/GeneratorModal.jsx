@@ -1,4 +1,4 @@
-const { React } = require("powercord/webpack");
+const { React, messages, channels } = require("powercord/webpack");
 const { clipboard } = require("electron");
 const request = require("request");
 const { FormTitle, Button, Card, Text } = require("powercord/components");
@@ -108,7 +108,7 @@ class GeneratorModal extends React.Component {
           </SwitchItem>
           <Card style={{ padding: "18px" }}>
             <Text>
-              Version 0.3.0 and below were made by Liam The Protogen#2501.
+              Version 0.4.0 and below were made by Liam The Protogen#2501.
             </Text>
           </Card>
           <div style={{ marginBottom: 20 }} />
@@ -127,13 +127,37 @@ class GeneratorModal extends React.Component {
                     this.error(err, true);
                     return;
                   }
+                  messages.sendMessage(channels.getChannelId(), {
+                    content: `||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||https://em.kyza.net/embed/${body.id}`,
+                  });
+                  closeModal();
+                }
+              );
+            }}
+          >
+            Send
+          </Button>
+          <Button
+            style={{ marginRight: "10px" }}
+            onClick={() => {
+              request(
+                {
+                  url: "https://em.kyza.net/create/",
+                  method: "POST",
+                  json: this.state,
+                },
+                (err, res, body) => {
+                  if (err) {
+                    this.error(err, true);
+                    return;
+                  }
                   clipboard.writeText(`https://em.kyza.net/embed/${body.id}`);
                   closeModal();
                 }
               );
             }}
           >
-            Generate
+            Copy
           </Button>
           <Button
             onClick={closeModal}
