@@ -24,6 +24,21 @@ class GeneratorModal extends React.Component {
       banner: false,
       image: "",
       color: "",
+      userHasInputed: false,
+    };
+
+    this.hasUserInputed = () => {
+      if (
+        this.state.providerName == "" &&
+        this.state.authorName == "" &&
+        this.state.title == "" &&
+        this.state.description == "" &&
+        this.state.image == ""
+      ) {
+        this.setState({ userHasInputed: false });
+      } else {
+        this.setState({ userHasInputed: true });
+      }
     };
   }
 
@@ -36,8 +51,9 @@ class GeneratorModal extends React.Component {
         <Modal.Content>
           <TextAreaInput
             value={this.state.providerName}
-            onChange={(o) => {
-              this.setState({ providerName: o.toString() });
+            onChange={async (o) => {
+              await this.setState({ providerName: o.toString() });
+              this.hasUserInputed();
             }}
             rows={1}
           >
@@ -54,8 +70,9 @@ class GeneratorModal extends React.Component {
           </TextAreaInput>
           <TextAreaInput
             value={this.state.authorName}
-            onChange={(o) => {
-              this.setState({ authorName: o.toString() });
+            onChange={async (o) => {
+              await this.setState({ authorName: o.toString() });
+              this.hasUserInputed();
             }}
             rows={1}
           >
@@ -72,8 +89,9 @@ class GeneratorModal extends React.Component {
           </TextAreaInput>
           <TextAreaInput
             value={this.state.title}
-            onChange={(o) => {
-              this.setState({ title: o.toString() });
+            onChange={async (o) => {
+              await this.setState({ title: o.toString() });
+              this.hasUserInputed();
             }}
             rows={1}
           >
@@ -81,8 +99,9 @@ class GeneratorModal extends React.Component {
           </TextAreaInput>
           <TextAreaInput
             value={this.state.description}
-            onChange={(o) => {
-              this.setState({ description: o.toString() });
+            onChange={async (o) => {
+              await this.setState({ description: o.toString() });
+              this.hasUserInputed();
             }}
             rows={4}
           >
@@ -90,8 +109,9 @@ class GeneratorModal extends React.Component {
           </TextAreaInput>
           <TextAreaInput
             value={this.state.image}
-            onChange={(o) => {
-              this.setState({ image: o.toString() });
+            onChange={async (o) => {
+              await this.setState({ image: o.toString() });
+              this.hasUserInputed();
             }}
             rows={1}
           >
@@ -108,13 +128,15 @@ class GeneratorModal extends React.Component {
           </SwitchItem>
           <Card style={{ padding: "18px" }}>
             <Text>
-              Version 0.4.0 and below were made by Liam The Protogen#2501.
+              Version 0.5.0 and below were made by Liam The Protogen#2501.
             </Text>
           </Card>
           <div style={{ marginBottom: 20 }} />
         </Modal.Content>
         <Modal.Footer>
           <Button
+            color={Button.Colors.GREEN}
+            disabled={!this.state.userHasInputed}
             onClick={() => {
               request(
                 {
@@ -139,6 +161,7 @@ class GeneratorModal extends React.Component {
           </Button>
           <Button
             style={{ marginRight: "10px" }}
+            disabled={!this.state.userHasInputed}
             onClick={() => {
               request(
                 {
