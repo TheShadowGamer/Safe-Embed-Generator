@@ -140,7 +140,7 @@ class GeneratorModal extends React.Component {
             onClick={() => {
               request(
                 {
-                  url: "https://em.kyza.net/create/",
+                  url: "https://em.bigdumb.gq/create/",
                   method: "POST",
                   json: this.state,
                 },
@@ -150,7 +150,7 @@ class GeneratorModal extends React.Component {
                     return;
                   }
                   messages.sendMessage(channels.getChannelId(), {
-                    content: `https://em.kyza.net/embed/${body.id}`,
+                    content: `https://em.bigdumb.gq/embed/${body.id}`,
                   });
                   closeModal();
                 }
@@ -165,7 +165,7 @@ class GeneratorModal extends React.Component {
             onClick={() => {
               request(
                 {
-                  url: "https://em.kyza.net/create/",
+                  url: "https://em.bigdumb.gq/create/",
                   method: "POST",
                   json: this.state,
                 },
@@ -174,7 +174,7 @@ class GeneratorModal extends React.Component {
                     this.error(err, true);
                     return;
                   }
-                  clipboard.writeText(`https://em.kyza.net/embed/${body.id}`);
+                  clipboard.writeText(`https://em.bigdumb.gq/embed/${body.id}`);
                   closeModal();
                 }
               );
