@@ -40,6 +40,15 @@ class GeneratorModal extends React.Component {
         this.setState({ userHasInputed: true });
       }
     };
+
+    this._numberToHex = (color) => {
+      const r = (color & 0xff0000) >>> 16;
+      const g = (color & 0xff00) >>> 8;
+      const b = color & 0xff;
+      return `#${r.toString(16).padStart(2, "0")}${g
+        .toString(16)
+        .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+    };
   }
 
   render() {
@@ -126,9 +135,20 @@ class GeneratorModal extends React.Component {
           >
             Image Banner
           </SwitchItem>
+          <ColorPickerInput
+            onChange={(c) =>
+              this.setState({ color: c ? this._numberToHex(c) : null })
+            }
+            default={parseInt("202225", 16)}
+            value={
+              this.state.color ? parseInt(this.state.color.slice(1), 16) : 0
+            }
+          >
+            Color
+          </ColorPickerInput>
           <Card style={{ padding: "18px" }}>
             <Text>
-              Version 0.5.0 and below were made by Liam The Protogen#2501.
+              Version 0.6.0 and below were made by Liam The Protogen#2501.
             </Text>
           </Card>
           <div style={{ marginBottom: 20 }} />
