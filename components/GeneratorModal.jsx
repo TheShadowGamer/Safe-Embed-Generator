@@ -1,7 +1,7 @@
 const { React, messages, channels } = require("powercord/webpack");
 const { clipboard } = require("electron");
 const request = require("request");
-const { FormTitle, Button, Card, Text } = require("powercord/components");
+const { FormTitle, Button } = require("powercord/components");
 const {
   TextAreaInput,
   SwitchItem,
@@ -146,11 +146,6 @@ class GeneratorModal extends React.Component {
           >
             Color
           </ColorPickerInput>
-          <Card style={{ padding: "18px" }}>
-            <Text>
-              Version 0.6.0 and below were made by Liam The Protogen#2501.
-            </Text>
-          </Card>
           <div style={{ marginBottom: 20 }} />
         </Modal.Content>
         <Modal.Footer>
