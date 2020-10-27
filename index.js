@@ -29,7 +29,7 @@ module.exports = class SafeEmbedGenerator extends Plugin {
           React.createElement(
             "div",
             {
-              className: ".safe-embed-generator-button",
+              className: "safe-embed-generator-button",
               onClick: () => open(() => React.createElement(GeneratorModal)),
             },
             React.createElement(Button)
